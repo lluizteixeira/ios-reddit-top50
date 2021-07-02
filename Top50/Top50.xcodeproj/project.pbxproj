@@ -14,6 +14,17 @@
 		2572A13D268C026E00568572 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2572A13B268C026E00568572 /* LaunchScreen.storyboard */; };
 		2572A148268C026E00568572 /* Top50Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2572A147268C026E00568572 /* Top50Tests.swift */; };
 		2572A153268C026E00568572 /* Top50UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2572A152268C026E00568572 /* Top50UITests.swift */; };
+		25A752CE268E884C00CB0C26 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A752CD268E884C00CB0C26 /* FeedViewController.swift */; };
+		25A752D6268E886000CB0C26 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A752D5268E886000CB0C26 /* PostViewController.swift */; };
+		25A752DB268E8B0100CB0C26 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A752DA268E8B0100CB0C26 /* UIViewControllerExtension.swift */; };
+		25A752E1268E8B2E00CB0C26 /* StoryboardEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A752E0268E8B2E00CB0C26 /* StoryboardEnum.swift */; };
+		25A752EE268E8D0300CB0C26 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A752ED268E8D0300CB0C26 /* FeedViewModel.swift */; };
+		25A752FE268E8E9500CB0C26 /* FeedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A752FD268E8E9500CB0C26 /* FeedService.swift */; };
+		25A75306268EA92100CB0C26 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A75305268EA92100CB0C26 /* Post.swift */; };
+		25A7530B268EB09D00CB0C26 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A7530A268EB09D00CB0C26 /* Media.swift */; };
+		25A75310268EB30700CB0C26 /* Oembed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A7530F268EB30700CB0C26 /* Oembed.swift */; };
+		25A75315268EB34800CB0C26 /* RedditVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A75314268EB34800CB0C26 /* RedditVideo.swift */; };
+		25A7531A268EBC6C00CB0C26 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A75319268EBC6C00CB0C26 /* FeedCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +58,17 @@
 		2572A14E268C026E00568572 /* Top50UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Top50UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2572A152268C026E00568572 /* Top50UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Top50UITests.swift; sourceTree = "<group>"; };
 		2572A154268C026E00568572 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		25A752CD268E884C00CB0C26 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		25A752D5268E886000CB0C26 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		25A752DA268E8B0100CB0C26 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		25A752E0268E8B2E00CB0C26 /* StoryboardEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardEnum.swift; sourceTree = "<group>"; };
+		25A752ED268E8D0300CB0C26 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		25A752FD268E8E9500CB0C26 /* FeedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedService.swift; sourceTree = "<group>"; };
+		25A75305268EA92100CB0C26 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		25A7530A268EB09D00CB0C26 /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
+		25A7530F268EB30700CB0C26 /* Oembed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oembed.swift; sourceTree = "<group>"; };
+		25A75314268EB34800CB0C26 /* RedditVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditVideo.swift; sourceTree = "<group>"; };
+		25A75319268EBC6C00CB0C26 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,10 +119,11 @@
 		2572A12F268C026600568572 /* Top50 */ = {
 			isa = PBXGroup;
 			children = (
+				25A752DF268E8B1F00CB0C26 /* Enums */,
 				2572A16B268C0D1C00568572 /* Extensions */,
 				2572A16D268C0D3900568572 /* Network */,
 				2572A16E268C0D9800568572 /* Models */,
-				2572A16C268C0D2C00568572 /* ViewModels */,
+				25A752F6268E8E0E00CB0C26 /* ViewModels */,
 				2572A164268C0CB400568572 /* Views */,
 				2572A16A268C0CF000568572 /* Resources */,
 				2572A163268C0CA200568572 /* Application */,
@@ -139,6 +162,7 @@
 		2572A164268C0CB400568572 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				25A752CC268E883000CB0C26 /* TableViewCells */,
 				2572A166268C0CD700568572 /* ViewControllers */,
 				2572A165268C0CC400568572 /* Storyboards */,
 			);
@@ -157,6 +181,8 @@
 		2572A166268C0CD700568572 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				25A752CD268E884C00CB0C26 /* FeedViewController.swift */,
+				25A752D5268E886000CB0C26 /* PostViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -172,15 +198,9 @@
 		2572A16B268C0D1C00568572 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				25A752DA268E8B0100CB0C26 /* UIViewControllerExtension.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		2572A16C268C0D2C00568572 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		2572A16D268C0D3900568572 /* Network */ = {
@@ -194,6 +214,10 @@
 		2572A16E268C0D9800568572 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				25A75305268EA92100CB0C26 /* Post.swift */,
+				25A7530A268EB09D00CB0C26 /* Media.swift */,
+				25A7530F268EB30700CB0C26 /* Oembed.swift */,
+				25A75314268EB34800CB0C26 /* RedditVideo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -201,8 +225,33 @@
 		2572A16F268C0F2800568572 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				25A752FD268E8E9500CB0C26 /* FeedService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		25A752CC268E883000CB0C26 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				25A75319268EBC6C00CB0C26 /* FeedCell.swift */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		25A752DF268E8B1F00CB0C26 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				25A752E0268E8B2E00CB0C26 /* StoryboardEnum.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		25A752F6268E8E0E00CB0C26 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				25A752ED268E8D0300CB0C26 /* FeedViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,8 +384,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25A75310268EB30700CB0C26 /* Oembed.swift in Sources */,
+				25A7531A268EBC6C00CB0C26 /* FeedCell.swift in Sources */,
+				25A752EE268E8D0300CB0C26 /* FeedViewModel.swift in Sources */,
+				25A752FE268E8E9500CB0C26 /* FeedService.swift in Sources */,
+				25A752D6268E886000CB0C26 /* PostViewController.swift in Sources */,
+				25A752E1268E8B2E00CB0C26 /* StoryboardEnum.swift in Sources */,
+				25A7530B268EB09D00CB0C26 /* Media.swift in Sources */,
 				2572A131268C026600568572 /* AppDelegate.swift in Sources */,
+				25A752DB268E8B0100CB0C26 /* UIViewControllerExtension.swift in Sources */,
+				25A75306268EA92100CB0C26 /* Post.swift in Sources */,
+				25A752CE268E884C00CB0C26 /* FeedViewController.swift in Sources */,
 				2572A133268C026600568572 /* SceneDelegate.swift in Sources */,
+				25A75315268EB34800CB0C26 /* RedditVideo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
