@@ -19,7 +19,34 @@ class FeedViewController: UIViewController {
 
         self.tableview.delegate = self
         self.tableview.dataSource = self
+        
+        getFeed()
+
     }
+    
+    func getFeed() {
+        DispatchQueue.global(qos: .background).async {
+            self.viewModel.getFeed {
+                DispatchQueue.main.async {
+                    self.aiLoader.stopAnimating()
+                    self.tableview.reloadData()
+                }
+            } failure: { (error) in
+                DispatchQueue.main.async {
+                    
+                }
+            }
+        }
+        
+    }
+}
+
+extension FeedViewController {
+    
+    @IBAction func doRemovePost(_ sender: Any) {
+        
+    }
+    
     
 }
 
@@ -39,18 +66,20 @@ extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let post = self.viewModel.feed[indexPath.row]
+        let postContainer = self.viewModel.feed[indexPath.row]
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "", for: indexPath) as? FeedCell        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: FeedCell.identifer, for: indexPath) as? FeedCell        
         else { return UITableViewCell.init() }
         
+        cell.post = postContainer.data
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let postViewController = PostViewController.instantiate(storyboard: .main) as? PostViewController {
-            
+                        
+            //self.splitViewController?.hide(.supplementary)
         }
     }
 }

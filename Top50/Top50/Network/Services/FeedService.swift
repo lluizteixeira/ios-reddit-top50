@@ -6,26 +6,28 @@
 //
 
 import Foundation
+import Combine
 
 class FeedService {
     
-    class func get(_ limit: Int = 0, onSuccess: @escaping () -> Void, onFail: @escaping (_ error: String) -> Void) {
+    class func get(_ limit: Int = 10) -> AnyPublisher<FeedContainer, Error> {
         
         let url = URL(string: "https://www.reddit.com/r/popular/top.json?limit=\(limit)")!
-        _ = URLSession.shared
+        
+        print("REQUEST URL \n \(url) \n")
+        
+        return URLSession.shared
             .dataTaskPublisher(for: url)
             .tryMap{ element -> Data in
                 guard let httpResponse = element.response as? HTTPURLResponse,
                       httpResponse.statusCode == 200 else {
                     throw URLError(.badServerResponse)
                 }
+                
+                print("RESPONSE \n \(String.init(data: element.data, encoding: .utf8) ?? "NO DATA") \n")
                 return element.data
             }
-            .decode(type: Post.self, decoder: JSONDecoder())
-            .sink(receiveCompletion: {
-                    print("completion: \($0)")
-            },receiveValue: {
-                post in print("Received: \(post)")
-            })
+            .decode(type: FeedContainer.self, decoder: JSONDecoder())
+            .eraseToAnyPublisher()
     }
 }

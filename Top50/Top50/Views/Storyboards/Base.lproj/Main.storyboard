@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Post View Controller-->
         <scene sceneID="D34-yc-9z4">
             <objects>
-                <viewController id="ySv-IB-dVM" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PostViewController" id="ySv-IB-dVM" customClass="PostViewController" customModule="Top50" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="scE-Yv-QYO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -139,7 +139,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="212" id="1UY-ct-dHY">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="feedCell" rowHeight="212" id="1UY-ct-dHY" customClass="FeedCell" customModule="Top50" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="120" width="414" height="212"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1UY-ct-dHY" id="IZg-rf-w8n">
@@ -153,6 +153,11 @@
                                                         <constraint firstAttribute="height" constant="12" id="Fmp-3p-2Bm"/>
                                                         <constraint firstAttribute="width" constant="12" id="ZQV-aC-8br"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="6"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cVU-XG-Scw">
                                                     <rect key="frame" x="22" y="10" width="372" height="30"/>
@@ -183,7 +188,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailingMargin" secondItem="gIP-3i-ytd" secondAttribute="trailing" id="0Ci-qS-bAX"/>
                                                         <constraint firstItem="poN-vt-PvS" firstAttribute="leading" secondItem="oJN-eE-DPk" secondAttribute="trailing" constant="5" id="0ER-Gc-kf1"/>
@@ -226,6 +231,9 @@
                                                                 <color key="titleColor" red="0.69019607839999997" green="0.0" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <imageReference key="image" image="xmark.circle" catalog="system" renderingMode="template"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="doRemovePost:" destination="9cy-d9-VMV" eventType="touchUpInside" id="3yU-En-2AJ"/>
+                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000 comments" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Bd-8g-xIB">
                                                             <rect key="frame" x="279" y="0.0" width="91" height="38"/>
@@ -234,7 +242,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="38" id="BxR-5G-4sU"/>
                                                         <constraint firstItem="4Bd-8g-xIB" firstAttribute="top" secondItem="hzG-lE-HGS" secondAttribute="top" id="JYO-Dq-pbb"/>
@@ -267,6 +275,15 @@
                                                 <constraint firstItem="6Cb-xF-5jh" firstAttribute="leading" secondItem="xAU-Cg-bWJ" secondAttribute="trailing" constant="5" id="nhB-6G-KXD"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="authorLabel" destination="poN-vt-PvS" id="kfU-No-wap"/>
+                                            <outlet property="avatarImageView" destination="oJN-eE-DPk" id="lU4-BY-68M"/>
+                                            <outlet property="commentsLabel" destination="4Bd-8g-xIB" id="VPh-bj-kTz"/>
+                                            <outlet property="createdLabel" destination="gIP-3i-ytd" id="fg2-QY-Nh4"/>
+                                            <outlet property="readBulletView" destination="6aC-QS-zLX" id="XId-cd-rGX"/>
+                                            <outlet property="thumbnailImageView" destination="hha-AS-way" id="aAW-2z-QuS"/>
+                                            <outlet property="titleLabel" destination="xAU-Cg-bWJ" id="otS-ch-V1I"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -287,6 +304,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Feed Top 50" id="cTz-4z-Lno"/>
+                    <connections>
+                        <outlet property="aiLoader" destination="T5j-Ug-IW4" id="BMs-Rx-xnP"/>
+                        <outlet property="tableview" destination="kj8-rV-tgk" id="vEe-MP-FR1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fsq-IW-jCF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

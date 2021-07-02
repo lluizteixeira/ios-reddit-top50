@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct Post: Codable {
-    let author: String?
-    let title: String?
-    let url: String?
-    let thumbnail: String?
-    let media: String?
-    let num_comments: String?
-    let created: String?
+class Post: Codable {
+    var author: String?
+    var title: String?
+    var url: String?
+    var thumbnail: String?
+    var media: Media?
+    var num_comments: Int = 0
+    var created: Int = 0
 }

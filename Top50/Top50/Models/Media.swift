@@ -8,6 +8,6 @@
 import Foundation
 
 struct Media: Codable {
-    let reddit_video: String?
-    let oembed: String?
+    let reddit_video: RedditVideo?
+    let oembed: Oembed?
 }
