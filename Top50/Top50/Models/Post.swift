@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class Post: Codable {
     var author: String?
@@ -15,4 +16,18 @@ class Post: Codable {
     var media: Media?
     var num_comments: Int = 0
     var created: Int = 0
+    
+    var imageFile: UIImage?
+    
+    enum CodingKeys: CodingKey  { //CodingKeys
+        
+        case author
+        case title
+        case url
+        case thumbnail
+        case media
+        case num_comments
+        case created
+        
+    }
 }

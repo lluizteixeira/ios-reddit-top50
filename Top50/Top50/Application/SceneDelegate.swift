@@ -14,20 +14,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
-        guard
-          let splitViewController = window?.rootViewController as? UISplitViewController,
-          let leftNavController = splitViewController.viewControllers.first
-            as? UINavigationController,
-          let feedViewController = leftNavController.viewControllers.first
-            as? FeedViewController,
-            let rightNavController = splitViewController.viewControllers.last
-              as? UINavigationController,
-          let postViewController = rightNavController.viewControllers.last
-            as? PostViewController
-          else { fatalError() }
-
-        feedViewController.delegate = postViewController
-        
         guard let _ = (scene as? UIWindowScene) else { return }
     }
 

@@ -24,7 +24,15 @@ class FeedCell: UITableViewCell {
             //self.avatarImageView.image
             authorLabel.text = post?.author
             createdLabel.text = String(post?.created ?? 0)
-            //thumbnailImageView
+            
+            if post?.imageFile == nil {
+                thumbnailImageView.imageFromUrl(post?.thumbnail ?? "") { (image) in
+                    self.post?.imageFile = image
+                }
+            } else {
+                thumbnailImageView.image = post?.imageFile
+            }
+            
             titleLabel.text = post?.title
             commentsLabel.text = String(post?.num_comments ?? 0)
         }

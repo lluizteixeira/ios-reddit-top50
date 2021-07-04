@@ -14,33 +14,49 @@ protocol FeedViewControllerDelegate: class {
 
 class FeedViewController: UIViewController {
     
-    var viewModel: FeedViewModel = FeedViewModel()
-    
+    //MARK: IBOUTLETS
     @IBOutlet weak var tableview: UITableView!
-    @IBOutlet weak var aiLoader: UIActivityIndicatorView!
+    
+    //MARK: PROPERTIES
+    let refreshControl = UIRefreshControl()
+    
+    var viewModel: FeedViewModel = FeedViewModel()
     
     weak var delegate: FeedViewControllerDelegate?
 
+    //MARK: VIEW LOGIC
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableview.delegate = self
         self.tableview.dataSource = self
         
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        tableview.addSubview(refreshControl)
+        
         getFeed()
 
     }
+
+    @objc
+    func refresh(_ sender: AnyObject) {
+        getFeed()
+    }
     
     func getFeed() {
+        
+        refreshControl.beginRefreshing()
+        
         DispatchQueue.global(qos: .background).async {
-            self.viewModel.getFeed {
+            self.viewModel.getFeed { (error) in
                 DispatchQueue.main.async {
-                    self.aiLoader.stopAnimating()
                     self.tableview.reloadData()
-                }
-            } failure: { (error) in
-                DispatchQueue.main.async {
+                    self.refreshControl.endRefreshing()
                     
+                    if error != nil {
+                        print(error)
+                    }
                 }
             }
         }
@@ -48,15 +64,24 @@ class FeedViewController: UIViewController {
     }
 }
 
+//MARK: IBACTIONS
 extension FeedViewController {
     
     @IBAction func doRemovePost(_ sender: Any) {
         
+        let buttonPosition = (sender as AnyObject).convert(CGPoint.zero, to: self.tableview)
+        if let indexPath = self.tableview.indexPathForRow(at: buttonPosition) {
+            self.viewModel.deletePost(index: indexPath.row) {
+                self.tableview.beginUpdates()
+                self.tableview.deleteRows(at: [indexPath], with: .left)
+                self.tableview.endUpdates()
+            }
+        }
     }
-    
     
 }
 
+//MARK: TABLEVIEW DELEGATES
 extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {

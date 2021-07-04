@@ -35,8 +35,15 @@ class PostViewController: UIViewController {
         //self.avatarImageView.image
         authorLabel.text = post?.author
         createdLabel.text = String(post?.created ?? 0)
-        //thumbnailImageView
         titleLabel.text = post?.title
+        
+        if post?.imageFile == nil {
+            thumbnailImageView.imageFromUrl(post?.thumbnail ?? "") { (image) in
+                self.post?.imageFile = image
+            }
+        } else {
+            thumbnailImageView.image = post?.imageFile
+        }
         
         self.view.isHidden = post == nil
     }

@@ -14,21 +14,19 @@ class FeedViewModel {
     
     var cancellables = Set<AnyCancellable>()
     
-    func getFeed(success: @escaping () -> Void,
-                         failure: @escaping (_ error: String) -> Void) {
+    func getFeed(onComplete: @escaping (_ error: String?) -> Void) {
         
         FeedService.get().sink { (completion) in
             print(completion)
         } receiveValue: { (feed) in
             self.feed = feed.data?.children ?? []
-            success()
+            onComplete(nil)
         }
         .store(in: &cancellables)
     }
     
-    func deletePost(index: Int, success: @escaping () -> Void,
-                         failure: @escaping (_ error: String) -> Void) {
+    func deletePost(index: Int, onComplete: @escaping () -> Void) {
         self.feed.remove(at: index)
-        success()
+        onComplete()
     }
 }

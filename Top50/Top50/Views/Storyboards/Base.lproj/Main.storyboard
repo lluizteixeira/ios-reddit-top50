@@ -309,25 +309,18 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="T5j-Ug-IW4">
-                                <rect key="frame" x="197" y="438" width="20" height="20"/>
-                                <color key="color" systemColor="systemIndigoColor"/>
-                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bdT-xX-Jvd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="T5j-Ug-IW4" firstAttribute="centerX" secondItem="Z2e-TS-kL8" secondAttribute="centerX" id="KI9-GV-TRI"/>
                             <constraint firstItem="kj8-rV-tgk" firstAttribute="top" secondItem="Z2e-TS-kL8" secondAttribute="top" id="NAu-gR-WGD"/>
                             <constraint firstItem="kj8-rV-tgk" firstAttribute="leading" secondItem="bdT-xX-Jvd" secondAttribute="leading" id="WCV-UA-q3o"/>
-                            <constraint firstItem="T5j-Ug-IW4" firstAttribute="centerY" secondItem="Z2e-TS-kL8" secondAttribute="centerY" id="Zr7-Dt-Wgv"/>
                             <constraint firstAttribute="bottom" secondItem="kj8-rV-tgk" secondAttribute="bottom" id="bqJ-wr-uyC"/>
                             <constraint firstItem="kj8-rV-tgk" firstAttribute="trailing" secondItem="bdT-xX-Jvd" secondAttribute="trailing" id="nsX-d5-luY"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Feed Top 50" id="cTz-4z-Lno"/>
                     <connections>
-                        <outlet property="aiLoader" destination="T5j-Ug-IW4" id="BMs-Rx-xnP"/>
                         <outlet property="tableview" destination="kj8-rV-tgk" id="vEe-MP-FR1"/>
                     </connections>
                 </viewController>
@@ -379,9 +372,6 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemIndigoColor">
-            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
