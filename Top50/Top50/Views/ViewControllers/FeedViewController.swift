@@ -7,16 +7,23 @@
 
 import UIKit
 
+
+protocol FeedViewControllerDelegate: class {
+  func selectPost(_ post: Post)
+}
+
 class FeedViewController: UIViewController {
     
     var viewModel: FeedViewModel = FeedViewModel()
     
     @IBOutlet weak var tableview: UITableView!
     @IBOutlet weak var aiLoader: UIActivityIndicatorView!
+    
+    weak var delegate: FeedViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.tableview.delegate = self
         self.tableview.dataSource = self
         
@@ -77,9 +84,24 @@ extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let postViewController = PostViewController.instantiate(storyboard: .main) as? PostViewController {
-                        
-            //self.splitViewController?.hide(.supplementary)
+        
+        let postContainer = self.viewModel.feed[indexPath.row]
+        
+        if self.delegate == nil {
+            if let navigationController = UINavigationController.instantiate("navDetail", storyboard: .main) as? UINavigationController {
+            
+                if let postViewController = navigationController.viewControllers[0] as? PostViewController {
+                    delegate = postViewController
+                }
+                
+                self.splitViewController?.setViewController(navigationController, for: .secondary)
+            }
+        }
+        
+        if let delegate = self.delegate as? PostViewController, let post = postContainer.data {
+            delegate.selectPost(post)
+            self.splitViewController?
+                  .showDetailViewController(delegate, sender: nil)
         }
     }
 }
