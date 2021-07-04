@@ -18,6 +18,7 @@ class Post: Codable {
     var created: Int = 0
     
     var imageFile: UIImage?
+    var isNew: Bool = true
     
     enum CodingKeys: CodingKey  { //CodingKeys
         

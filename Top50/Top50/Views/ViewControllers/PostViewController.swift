@@ -21,7 +21,6 @@ class PostViewController: UIViewController {
         }
     }
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -32,9 +31,8 @@ class PostViewController: UIViewController {
     
     func reloadUI() {
         loadViewIfNeeded()
-        //self.avatarImageView.image
         authorLabel.text = post?.author
-        createdLabel.text = String(post?.created ?? 0)
+        createdLabel.text = (post?.created ?? 0).toDate().timeAgo()
         titleLabel.text = post?.title
         
         if post?.imageFile == nil {
@@ -47,11 +45,32 @@ class PostViewController: UIViewController {
         
         self.view.isHidden = post == nil
     }
-
+    
+    @IBAction func doShare(_ sender: Any) {
+        if let image = post?.imageFile {
+            
+            let title = post?.title ?? ""                        
+        
+            let shareAll = [image, title] as [Any]
+                                
+            let activityViewController = UIActivityViewController(activityItems: shareAll, applicationActivities: nil)
+            activityViewController.excludedActivityTypes = [.print,.airDrop,.assignToContact,.postToTencentWeibo]
+        
+            activityViewController.popoverPresentationController?.sourceView = self.view
+            self.present(activityViewController, animated: true, completion: nil)
+        } else {
+            self.alert(title: "Error sharing content", error: "No Image loaded for this post.")
+        }
+    }
+    
 }
 
 extension PostViewController: FeedViewControllerDelegate {
-  func selectPost(_ post: Post) {
-    self.post = post
-  }
+    func selectPost(_ post: Post) {
+        self.post = post
+    }
+    
+    func dismiss() {
+        self.post = nil
+    }
 }

@@ -11,22 +11,34 @@ import Combine
 class FeedViewModel {
 
     var feed: [PostContainer] = []
+    var after: String = ""
     
     var cancellables = Set<AnyCancellable>()
     
     func getFeed(onComplete: @escaping (_ error: String?) -> Void) {
         
-        FeedService.get().sink { (completion) in
+        FeedService.get(self.after).sink { (completion) in
             print(completion)
         } receiveValue: { (feed) in
-            self.feed = feed.data?.children ?? []
+            
+            if self.after == "" {
+                self.feed = feed.data?.children ?? []
+            } else {
+                self.feed.append(contentsOf: feed.data?.children ?? [])
+            }
+            
+            self.after = feed.data?.after ?? ""
+                        
             onComplete(nil)
         }
         .store(in: &cancellables)
     }
     
-    func deletePost(index: Int, onComplete: @escaping () -> Void) {
+    func deletePost(index: Int) {
         self.feed.remove(at: index)
-        onComplete()
+    }
+    
+    func deleteAllPosts() {
+        self.feed.removeAll()
     }
 }

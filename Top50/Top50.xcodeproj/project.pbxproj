@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		250F73AA268F39920089306A /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250F73A9268F39920089306A /* Feed.swift */; };
 		250F73B2268F3A880089306A /* FeedContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250F73B1268F3A880089306A /* FeedContainer.swift */; };
+		252AFDB3269240E000892E00 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252AFDB2269240E000892E00 /* SplashViewController.swift */; };
+		252AFDB8269257D700892E00 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252AFDB7269257D700892E00 /* UIColorExtension.swift */; };
+		252AFDBD26925A8700892E00 /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252AFDBC26925A8700892E00 /* IntExtension.swift */; };
+		252AFDC226925B0300892E00 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252AFDC126925B0300892E00 /* DateExtension.swift */; };
 		25384B2E268F709500561178 /* PostContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25384B2D268F709500561178 /* PostContainer.swift */; };
 		25384B36268F7DD200561178 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25384B35268F7DD200561178 /* UIViewExtension.swift */; };
 		25604AEB2691FDC9007454F9 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25604AEA2691FDC9007454F9 /* UIImageViewExtension.swift */; };
@@ -52,6 +56,10 @@
 /* Begin PBXFileReference section */
 		250F73A9268F39920089306A /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
 		250F73B1268F3A880089306A /* FeedContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedContainer.swift; sourceTree = "<group>"; };
+		252AFDB2269240E000892E00 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		252AFDB7269257D700892E00 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		252AFDBC26925A8700892E00 /* IntExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
+		252AFDC126925B0300892E00 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		25384B2D268F709500561178 /* PostContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostContainer.swift; sourceTree = "<group>"; };
 		25384B35268F7DD200561178 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		25604AEA2691FDC9007454F9 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
@@ -191,6 +199,7 @@
 		2572A166268C0CD700568572 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				252AFDB2269240E000892E00 /* SplashViewController.swift */,
 				25A752CD268E884C00CB0C26 /* FeedViewController.swift */,
 				25A752D5268E886000CB0C26 /* PostViewController.swift */,
 			);
@@ -208,9 +217,12 @@
 		2572A16B268C0D1C00568572 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				252AFDB7269257D700892E00 /* UIColorExtension.swift */,
 				25A752DA268E8B0100CB0C26 /* UIViewControllerExtension.swift */,
 				25384B35268F7DD200561178 /* UIViewExtension.swift */,
 				25604AEA2691FDC9007454F9 /* UIImageViewExtension.swift */,
+				252AFDBC26925A8700892E00 /* IntExtension.swift */,
+				252AFDC126925B0300892E00 /* DateExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -401,11 +413,13 @@
 			files = (
 				25A75310268EB30700CB0C26 /* Oembed.swift in Sources */,
 				25A7531A268EBC6C00CB0C26 /* FeedCell.swift in Sources */,
+				252AFDBD26925A8700892E00 /* IntExtension.swift in Sources */,
 				250F73B2268F3A880089306A /* FeedContainer.swift in Sources */,
 				25A752EE268E8D0300CB0C26 /* FeedViewModel.swift in Sources */,
 				250F73AA268F39920089306A /* Feed.swift in Sources */,
 				25A752FE268E8E9500CB0C26 /* FeedService.swift in Sources */,
 				25A752D6268E886000CB0C26 /* PostViewController.swift in Sources */,
+				252AFDB8269257D700892E00 /* UIColorExtension.swift in Sources */,
 				25384B2E268F709500561178 /* PostContainer.swift in Sources */,
 				25384B36268F7DD200561178 /* UIViewExtension.swift in Sources */,
 				25A752E1268E8B2E00CB0C26 /* StoryboardEnum.swift in Sources */,
@@ -413,6 +427,8 @@
 				2572A131268C026600568572 /* AppDelegate.swift in Sources */,
 				25A752DB268E8B0100CB0C26 /* UIViewControllerExtension.swift in Sources */,
 				25A75306268EA92100CB0C26 /* Post.swift in Sources */,
+				252AFDB3269240E000892E00 /* SplashViewController.swift in Sources */,
+				252AFDC226925B0300892E00 /* DateExtension.swift in Sources */,
 				25604AEB2691FDC9007454F9 /* UIImageViewExtension.swift in Sources */,
 				25A752CE268E884C00CB0C26 /* FeedViewController.swift in Sources */,
 				2572A133268C026600568572 /* SceneDelegate.swift in Sources */,

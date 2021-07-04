@@ -10,6 +10,7 @@ import UIKit
 
 protocol FeedViewControllerDelegate: class {
   func selectPost(_ post: Post)
+  func dismiss()
 }
 
 class FeedViewController: UIViewController {
@@ -28,25 +29,30 @@ class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        ///sets tableview delegates
         self.tableview.delegate = self
         self.tableview.dataSource = self
         
-        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        ///adds pull to refresh to tableview
+        refreshControl.attributedTitle = NSAttributedString(string: "Reloading Feed")
         refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
         tableview.addSubview(refreshControl)
         
+        ///reloads the post feed
         getFeed()
-
     }
 
     @objc
     func refresh(_ sender: AnyObject) {
+        self.viewModel.after = ""
         getFeed()
     }
     
     func getFeed() {
         
-        refreshControl.beginRefreshing()
+        if self.viewModel.after == "" {
+            refreshControl.beginRefreshing()
+        }
         
         DispatchQueue.global(qos: .background).async {
             self.viewModel.getFeed { (error) in
@@ -55,12 +61,18 @@ class FeedViewController: UIViewController {
                     self.refreshControl.endRefreshing()
                     
                     if error != nil {
-                        print(error)
+                        self.alert(title: "Error", error: "Error when loading the Top 50 feed. Try again later.")
                     }
                 }
             }
         }
-        
+    }
+    
+    func removePostAtIndex(_ indexPath: IndexPath) {
+        self.viewModel.deletePost(index: indexPath.row)
+        self.tableview.beginUpdates()
+        self.tableview.deleteRows(at: [indexPath], with: .left)
+        self.tableview.endUpdates()
     }
 }
 
@@ -71,11 +83,19 @@ extension FeedViewController {
         
         let buttonPosition = (sender as AnyObject).convert(CGPoint.zero, to: self.tableview)
         if let indexPath = self.tableview.indexPathForRow(at: buttonPosition) {
-            self.viewModel.deletePost(index: indexPath.row) {
-                self.tableview.beginUpdates()
-                self.tableview.deleteRows(at: [indexPath], with: .left)
-                self.tableview.endUpdates()
-            }
+            self.removePostAtIndex(indexPath)
+        }
+    }
+    
+    @IBAction func doRemoveAllPost(_ sender: Any) {
+        
+        self.viewModel.deleteAllPosts()
+        self.tableview.beginUpdates()
+        self.tableview.reloadSections(IndexSet(integer: 0), with: .left)
+        self.tableview.endUpdates()
+        
+        if let delegate = self.delegate {
+            delegate.dismiss()
         }
     }
     
@@ -108,7 +128,19 @@ extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let postContainer = self.viewModel.feed[indexPath.row]
+        
+        cell.backgroundColor = .colorFromHex(hex: "#EAEAEA")
+        
+        if postContainer.data?.isNew == false {
+            cell.backgroundColor = .white
+        }
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        tableview.deselectRow(at: indexPath, animated: true)
         
         let postContainer = self.viewModel.feed[indexPath.row]
         
@@ -124,9 +156,34 @@ extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         if let delegate = self.delegate as? PostViewController, let post = postContainer.data {
+            
+            post.isNew = false
+            
             delegate.selectPost(post)
             self.splitViewController?
                   .showDetailViewController(delegate, sender: nil)
+        }
+        
+        self.tableview.reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            self.removePostAtIndex(indexPath)
+        }
+    }
+}
+
+// MARK: UIScrollViewDelegate
+extension FeedViewController: UIScrollViewDelegate {
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if tableview.contentOffset.y + tableview.frame.size.height >= tableview.contentSize.height-350 {
+            getFeed()
         }
     }
 }

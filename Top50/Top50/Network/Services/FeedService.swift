@@ -10,9 +10,9 @@ import Combine
 
 class FeedService {
     
-    class func get(_ limit: Int = 10) -> AnyPublisher<FeedContainer, Error> {
+    class func get(_ after: String = "") -> AnyPublisher<FeedContainer, Error> {
         
-        let url = URL(string: "https://www.reddit.com/r/popular/top.json?limit=\(limit)")!
+        let url = URL(string: "https://www.reddit.com/r/popular/top.json?limit=10&after=\(after)")!
         
         print("REQUEST URL \n \(url) \n")
         

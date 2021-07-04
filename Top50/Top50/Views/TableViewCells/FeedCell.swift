@@ -21,9 +21,8 @@ class FeedCell: UITableViewCell {
     
     var post: Post? {
         didSet {
-            //self.avatarImageView.image
             authorLabel.text = post?.author
-            createdLabel.text = String(post?.created ?? 0)
+            createdLabel.text = (post?.created ?? 0).toDate().timeAgo()
             
             if post?.imageFile == nil {
                 thumbnailImageView.imageFromUrl(post?.thumbnail ?? "") { (image) in
@@ -34,7 +33,9 @@ class FeedCell: UITableViewCell {
             }
             
             titleLabel.text = post?.title
-            commentsLabel.text = String(post?.num_comments ?? 0)
+            commentsLabel.text = String("\(String(post?.num_comments ?? 0)) comments")
+            
+            readBulletView.isHidden = !(post?.isNew ?? true)
         }
     }
 
@@ -45,8 +46,6 @@ class FeedCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }
