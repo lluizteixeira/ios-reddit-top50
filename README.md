@@ -27,18 +27,18 @@ The app uses MVVM https://www.objc.io/issues/13-architecture/mvvm/. Logic is typ
     
 ## Project Structure
 
-  ├─ Enums
-  ├─ Network
-    ├─ Services
-  ├─ Models
-  ├─ ViewModels
-  ├─ Views
-    ├─ ViewControllers
-    ├─ TableViewCells
-    ├─ Storyboards
-  ├─ Extensions
-  ├─ Resources
-  ├─ Application  
+    ├─ Enums
+    ├─ Network
+        ├─ Services
+    ├─ Models
+    ├─ ViewModels
+    ├─ Views
+        ├─ ViewControllers
+        ├─ TableViewCells
+        ├─ Storyboards
+    ├─ Extensions
+    ├─ Resources
+    ├─ Application  
 
 
 ## more
