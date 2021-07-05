@@ -1,4 +1,5 @@
-# ios-reddit-top50
+# iOS Reddit Top50 ![CI](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
+
 Repository for App IOS Reddit Top 50
 
 App shows a list for the Top 50 posts in [Reddit] - www.reddit.com/top
