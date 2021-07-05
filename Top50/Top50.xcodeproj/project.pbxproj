@@ -16,7 +16,6 @@
 		25384B2E268F709500561178 /* PostContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25384B2D268F709500561178 /* PostContainer.swift */; };
 		25384B36268F7DD200561178 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25384B35268F7DD200561178 /* UIViewExtension.swift */; };
 		254D12FC26933C7C00A05AFD /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254D12FB26933C7C00A05AFD /* SplitViewController.swift */; };
-		254D13052693473F00A05AFD /* mock_feed.json in Resources */ = {isa = PBXBuildFile; fileRef = 254D13042693473F00A05AFD /* mock_feed.json */; };
 		254D130A2693517900A05AFD /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254D13092693517900A05AFD /* Util.swift */; };
 		25604AEB2691FDC9007454F9 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25604AEA2691FDC9007454F9 /* UIImageViewExtension.swift */; };
 		2572A131268C026600568572 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2572A130268C026600568572 /* AppDelegate.swift */; };
@@ -37,6 +36,7 @@
 		25A75310268EB30700CB0C26 /* Oembed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A7530F268EB30700CB0C26 /* Oembed.swift */; };
 		25A75315268EB34800CB0C26 /* RedditVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A75314268EB34800CB0C26 /* RedditVideo.swift */; };
 		25A7531A268EBC6C00CB0C26 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A75319268EBC6C00CB0C26 /* FeedCell.swift */; };
+		25CF5BD32693AEE200F31846 /* mock_feed.json in Resources */ = {isa = PBXBuildFile; fileRef = 25CF5BD22693AEE200F31846 /* mock_feed.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,7 +66,6 @@
 		25384B2D268F709500561178 /* PostContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostContainer.swift; sourceTree = "<group>"; };
 		25384B35268F7DD200561178 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		254D12FB26933C7C00A05AFD /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
-		254D13042693473F00A05AFD /* mock_feed.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = mock_feed.json; path = ../../../../../../mock_feed.json; sourceTree = "<group>"; };
 		254D13092693517900A05AFD /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		25604AEA2691FDC9007454F9 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		2572A12D268C026600568572 /* Top50.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Top50.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,6 +92,7 @@
 		25A7530F268EB30700CB0C26 /* Oembed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oembed.swift; sourceTree = "<group>"; };
 		25A75314268EB34800CB0C26 /* RedditVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditVideo.swift; sourceTree = "<group>"; };
 		25A75319268EBC6C00CB0C26 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
+		25CF5BD22693AEE200F31846 /* mock_feed.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mock_feed.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,7 +123,7 @@
 		254D13002693467000A05AFD /* SampleData */ = {
 			isa = PBXGroup;
 			children = (
-				254D13042693473F00A05AFD /* mock_feed.json */,
+				25CF5BD22693AEE200F31846 /* mock_feed.json */,
 			);
 			path = SampleData;
 			sourceTree = "<group>";
@@ -411,7 +411,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				254D13052693473F00A05AFD /* mock_feed.json in Resources */,
+				25CF5BD32693AEE200F31846 /* mock_feed.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
