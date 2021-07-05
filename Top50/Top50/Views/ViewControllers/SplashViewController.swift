@@ -19,7 +19,7 @@ class SplashViewController: UIViewController {
         super.viewDidAppear(animated)
         
         self.animateLogo {
-            if let mainController = UISplitViewController.instantiate("splitFeedController", storyboard: .main) as? UISplitViewController {
+            if let mainController = UISplitViewController.instantiate("splitFeedController", storyboard: .main) as? UISplitViewController {                
                 self.toMainControllerAsRoot(mainController)
             }
         }

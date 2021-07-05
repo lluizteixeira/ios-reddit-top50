@@ -36,6 +36,7 @@ class PostViewController: UIViewController {
         titleLabel.text = post?.title
         
         if post?.imageFile == nil {
+            thumbnailImageView.image = nil
             thumbnailImageView.imageFromUrl(post?.thumbnail ?? "") { (image) in
                 self.post?.imageFile = image
             }

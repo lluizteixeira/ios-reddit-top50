@@ -21,15 +21,15 @@
                                 <rect key="frame" x="20" y="108" width="374" height="734"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j8J-tO-3yD">
-                                        <rect key="frame" x="0.0" y="426" width="374" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="252" width="374" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pWL-Q0-7Oq">
-                                        <rect key="frame" x="0.0" y="47" width="374" height="374"/>
+                                        <rect key="frame" x="0.0" y="47" width="374" height="200"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="374" id="F55-6q-PL7"/>
+                                            <constraint firstAttribute="height" constant="200" id="F55-6q-PL7"/>
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wc9-MZ-RL5">
@@ -80,7 +80,7 @@
                                     <constraint firstItem="pWL-Q0-7Oq" firstAttribute="leading" secondItem="b5T-Ha-GyT" secondAttribute="leading" id="04K-Tg-4h3"/>
                                     <constraint firstItem="j8J-tO-3yD" firstAttribute="top" secondItem="pWL-Q0-7Oq" secondAttribute="bottom" constant="5" id="55x-HG-qIT"/>
                                     <constraint firstItem="Wc9-MZ-RL5" firstAttribute="leading" secondItem="b5T-Ha-GyT" secondAttribute="leading" id="8Um-jg-Gxh"/>
-                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="j8J-tO-3yD" secondAttribute="bottom" id="AYy-md-jdq"/>
+                                    <constraint firstAttribute="bottom" secondItem="j8J-tO-3yD" secondAttribute="bottom" priority="250" id="AYy-md-jdq"/>
                                     <constraint firstAttribute="trailing" secondItem="pWL-Q0-7Oq" secondAttribute="trailing" id="LWd-GG-VKV"/>
                                     <constraint firstItem="Wc9-MZ-RL5" firstAttribute="top" secondItem="b5T-Ha-GyT" secondAttribute="top" id="Tc6-Uq-WIZ"/>
                                     <constraint firstAttribute="trailing" secondItem="j8J-tO-3yD" secondAttribute="trailing" id="meK-cV-4XJ"/>
@@ -116,7 +116,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7dN-Pc-gJ4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2215.9420289855075" y="339.50892857142856"/>
+            <point key="canvasLocation" x="2110" y="341"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Nza-GL-UXa">
@@ -169,6 +169,9 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Feed Available 😉" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUk-So-jUB">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="92"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="92" id="7VT-Eg-v2Z"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -246,12 +249,12 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hha-AS-way">
                                                     <rect key="frame" x="22" y="54" width="100" height="100"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="100" id="Sgv-n5-1IW"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="Sgv-n5-1IW"/>
                                                         <constraint firstAttribute="width" constant="100" id="Udz-o0-Nfl"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xAU-Cg-bWJ">
-                                                    <rect key="frame" x="127" y="56" width="264.5" height="20.5"/>
+                                                    <rect key="frame" x="127" y="56" width="264.5" height="98"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -312,7 +315,7 @@
                                                 <constraint firstItem="xAU-Cg-bWJ" firstAttribute="top" secondItem="cVU-XG-Scw" secondAttribute="bottom" constant="16" id="TOy-pX-7y6"/>
                                                 <constraint firstItem="cVU-XG-Scw" firstAttribute="top" secondItem="IZg-rf-w8n" secondAttribute="top" constant="10" id="VmF-If-P9t"/>
                                                 <constraint firstItem="hzG-lE-HGS" firstAttribute="top" secondItem="hha-AS-way" secondAttribute="bottom" constant="10" id="bHJ-al-Ze2"/>
-                                                <constraint firstItem="hzG-lE-HGS" firstAttribute="top" relation="greaterThanOrEqual" secondItem="xAU-Cg-bWJ" secondAttribute="bottom" constant="10" id="bhS-1X-5aP"/>
+                                                <constraint firstItem="hzG-lE-HGS" firstAttribute="top" secondItem="xAU-Cg-bWJ" secondAttribute="bottom" constant="10" id="bhS-1X-5aP"/>
                                                 <constraint firstAttribute="trailing" secondItem="cVU-XG-Scw" secondAttribute="trailing" constant="20" symbolic="YES" id="g9S-Dk-AwP"/>
                                                 <constraint firstItem="hha-AS-way" firstAttribute="top" secondItem="cVU-XG-Scw" secondAttribute="bottom" constant="14" id="n0H-2G-wMo"/>
                                                 <constraint firstItem="6Cb-xF-5jh" firstAttribute="leading" secondItem="xAU-Cg-bWJ" secondAttribute="trailing" constant="5" id="nhB-6G-KXD"/>
@@ -420,7 +423,7 @@
         <!--Split View Controller-->
         <scene sceneID="xNg-CX-HoS">
             <objects>
-                <splitViewController storyboardIdentifier="splitFeedController" allowDoubleColumnStyle="YES" preferredDisplayMode="beside" behavior="displace" id="x5t-Ss-ni2" sceneMemberID="viewController">
+                <splitViewController storyboardIdentifier="splitFeedController" useStoryboardIdentifierAsRestorationIdentifier="YES" allowDoubleColumnStyle="YES" preferredDisplayMode="beside" behavior="displace" id="x5t-Ss-ni2" sceneMemberID="viewController">
                     <connections>
                         <segue destination="KuN-1P-0go" kind="relationship" relationship="masterViewController" id="sDI-dY-jAP"/>
                         <segue destination="Rt6-fB-qS4" kind="relationship" relationship="detailViewController" id="NRp-Qf-q6r"/>

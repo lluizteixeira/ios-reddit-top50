@@ -25,6 +25,7 @@ class FeedCell: UITableViewCell {
             createdLabel.text = (post?.created ?? 0).toDate().timeAgo()
             
             if post?.imageFile == nil {
+                thumbnailImageView.image = nil
                 thumbnailImageView.imageFromUrl(post?.thumbnail ?? "") { (image) in
                     self.post?.imageFile = image
                 }

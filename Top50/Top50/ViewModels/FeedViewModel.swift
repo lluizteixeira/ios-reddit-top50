@@ -11,6 +11,7 @@ import Combine
 class FeedViewModel {
 
     var feed: [PostContainer] = []
+    var hasLoaded: Bool = false
     var after: String = ""
     
     var cancellables = Set<AnyCancellable>()
@@ -20,6 +21,8 @@ class FeedViewModel {
         FeedService.get(self.after).sink { (completion) in
             print(completion)
         } receiveValue: { (feed) in
+            
+            self.hasLoaded = true
             
             if self.after == "" {
                 self.feed = feed.data?.children ?? []

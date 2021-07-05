@@ -32,6 +32,8 @@ class FeedViewController: UIViewController {
         ///sets tableview delegates
         self.tableview.delegate = self
         self.tableview.dataSource = self
+        self.tableview.estimatedRowHeight = 212.0
+        self.tableview.rowHeight = UITableView.automaticDimension
         
         ///adds pull to refresh to tableview
         refreshControl.attributedTitle = NSAttributedString(string: "Reloading Feed")
@@ -109,7 +111,16 @@ extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.viewModel.feed.count
+        
+        if self.viewModel.feed.count > 0 {
+            return self.viewModel.feed.count
+        } else {
+            if self.viewModel.hasLoaded {
+                return 1
+            } else {
+                return 0
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -118,53 +129,62 @@ extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let postContainer = self.viewModel.feed[indexPath.row]
+        if self.viewModel.feed.count > 0 {
+            let postContainer = self.viewModel.feed[indexPath.row]
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: FeedCell.identifer, for: indexPath) as? FeedCell        
-        else { return UITableViewCell.init() }
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: FeedCell.identifer, for: indexPath) as? FeedCell
+            else { return UITableViewCell.init() }
         
-        cell.post = postContainer.data
+            cell.post = postContainer.data
         
-        return cell
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "noDataCell", for: indexPath)
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let postContainer = self.viewModel.feed[indexPath.row]
+        if self.viewModel.feed.count > 0 {
+            let postContainer = self.viewModel.feed[indexPath.row]
         
-        cell.backgroundColor = .colorFromHex(hex: "#EAEAEA")
+            cell.backgroundColor = .colorFromHex(hex: "#EAEAEA")
         
-        if postContainer.data?.isNew == false {
-            cell.backgroundColor = .white
+            if postContainer.data?.isNew == false {
+                cell.backgroundColor = .white
+            }
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        tableview.deselectRow(at: indexPath, animated: true)
+        if self.viewModel.feed.count > 0 {
+            tableview.deselectRow(at: indexPath, animated: true)
         
-        let postContainer = self.viewModel.feed[indexPath.row]
+            let postContainer = self.viewModel.feed[indexPath.row]
         
-        if self.delegate == nil {
-            if let navigationController = UINavigationController.instantiate("navDetail", storyboard: .main) as? UINavigationController {
+            if self.delegate == nil {
+                if let navigationController = UINavigationController.instantiate("navDetail", storyboard: .main) as? UINavigationController {
             
-                if let postViewController = navigationController.viewControllers[0] as? PostViewController {
-                    delegate = postViewController
-                }
+                    if let postViewController = navigationController.viewControllers[0] as? PostViewController {
+                        delegate = postViewController
+                    }
                 
-                self.splitViewController?.setViewController(navigationController, for: .secondary)
+                    self.splitViewController?.setViewController(navigationController, for: .secondary)
+                }
             }
-        }
         
-        if let delegate = self.delegate as? PostViewController, let post = postContainer.data {
+            if let delegate = self.delegate as? PostViewController, let post = postContainer.data {
             
-            post.isNew = false
+                post.isNew = false
             
-            delegate.selectPost(post)
-            self.splitViewController?
+                delegate.selectPost(post)
+                self.splitViewController?
                   .showDetailViewController(delegate, sender: nil)
-        }
+            }
         
-        self.tableview.reloadData()
+            self.tableview.reloadData()
+        }
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
