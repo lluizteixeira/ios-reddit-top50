@@ -24,6 +24,6 @@ jobs:
     - name: Select Xcode
       run: sudo xcode-select -switch /Applications/Xcode.app && /usr/bin/xcodebuild -version
     - name: Run unit tests
-      run: 
+      run: |
       cd Top50
       xcodebuild test -scheme Top50 -workspace Top50.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 11,OS=14.2' | xcpretty && exit ${PIPESTATUS[0]}
