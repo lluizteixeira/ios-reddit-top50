@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2505603F26939FC50089790B /* UITableviewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2505603E26939FC50089790B /* UITableviewExtension.swift */; };
 		250F73AA268F39920089306A /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250F73A9268F39920089306A /* Feed.swift */; };
 		250F73B2268F3A880089306A /* FeedContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 250F73B1268F3A880089306A /* FeedContainer.swift */; };
 		252AFDB3269240E000892E00 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 252AFDB2269240E000892E00 /* SplashViewController.swift */; };
@@ -56,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2505603E26939FC50089790B /* UITableviewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableviewExtension.swift; sourceTree = "<group>"; };
 		250F73A9268F39920089306A /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
 		250F73B1268F3A880089306A /* FeedContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedContainer.swift; sourceTree = "<group>"; };
 		252AFDB2269240E000892E00 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				25604AEA2691FDC9007454F9 /* UIImageViewExtension.swift */,
 				252AFDBC26925A8700892E00 /* IntExtension.swift */,
 				252AFDC126925B0300892E00 /* DateExtension.swift */,
+				2505603E26939FC50089790B /* UITableviewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				252AFDB3269240E000892E00 /* SplashViewController.swift in Sources */,
 				252AFDC226925B0300892E00 /* DateExtension.swift in Sources */,
 				25604AEB2691FDC9007454F9 /* UIImageViewExtension.swift in Sources */,
+				2505603F26939FC50089790B /* UITableviewExtension.swift in Sources */,
 				25A752CE268E884C00CB0C26 /* FeedViewController.swift in Sources */,
 				2572A133268C026600568572 /* SceneDelegate.swift in Sources */,
 				25A75315268EB34800CB0C26 /* RedditVideo.swift in Sources */,

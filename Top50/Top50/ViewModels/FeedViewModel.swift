@@ -27,8 +27,15 @@ class FeedViewModel {
     func getFeed(onComplete: @escaping (_ error: String?) -> Void) {
         
         FeedService.get(self.after).sink { (completion) in
+            #if DEBUG
             print(completion)
-        } receiveValue: { (feed) in
+            #endif
+        } receiveValue: { [weak self] feed in
+            
+            guard let self = self else {
+                onComplete(nil)
+                return                
+            }
             
             //set that the first feed load happened
             self.hasLoaded = true
@@ -68,5 +75,6 @@ class FeedViewModel {
     ///
     func deleteAllPosts() {
         self.feed.removeAll()
+        self.after = ""
     }
 }

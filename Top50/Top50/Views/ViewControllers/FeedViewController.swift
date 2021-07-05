@@ -64,10 +64,14 @@ class FeedViewController: UIViewController {
         }
         
         DispatchQueue.global(qos: .background).async {
-            self.viewModel.getFeed { (error) in
+            self.viewModel.getFeed { [weak self] (error) in
+                
+                guard let self = self else { return }
+                
                 DispatchQueue.main.async {
                     self.tableview.reloadData()
                     self.refreshControl.endRefreshing()
+                    self.tableview.removeFooterLoader()
                     
                     if error != nil {
                         self.alert(title: "Error", error: "Error when loading the Top 50 feed. Try again later.")
@@ -213,7 +217,10 @@ extension FeedViewController: UIScrollViewDelegate {
     /// scrollview delegate for pagination
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if tableview.contentOffset.y + tableview.frame.size.height >= tableview.contentSize.height-350 {
-            getFeed()
+            if self.viewModel.feed.count > 0 {
+                self.tableview.addFooterLoader()
+                getFeed()
+            }
         }
     }
 }
