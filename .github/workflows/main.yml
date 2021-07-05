@@ -20,7 +20,7 @@ jobs:
     runs-on: macOS-latest
     strategy:
         matrix:
-          destination: ['platform=iOS Simulator,OS=13.6,name=iPhone 11 Pro Max']
+          destination: ['platform=iOS Simulator,OS=14.4,name=iPhone 12 Pro Max']
     steps:
     - uses: actions/checkout@v1
     - name: List available Xcode versions
