@@ -30,6 +30,6 @@ jobs:
     - name: Run unit tests
       run: | 
         cd Top50 
-        xcodebuild clean test -project Top50.xcodeproj -scheme Texstyle -destination "${destination}" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
+        xcodebuild clean test -project Top50.xcodeproj -scheme Top50 -destination "${destination}" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
       env:
        destination: ${{ matrix.destination }}
