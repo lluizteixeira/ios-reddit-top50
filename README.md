@@ -1,4 +1,4 @@
-# iOS Reddit Top50 ![CI](https://github.com/lluizteixeira/ios-reddit-top50/workflows/main.yml/badge.svg)
+# iOS Reddit Top50 ![CI](https://github.com/lluizteixeira/ios-reddit-top50/actions/workflows/main.yml/badge.svg)
 
 Repository for App IOS Reddit Top 50
 
