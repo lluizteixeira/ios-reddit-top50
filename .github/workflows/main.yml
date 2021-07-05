@@ -15,8 +15,12 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  workspace_tests:
+  test:
+    name: Test
     runs-on: macOS-latest
+    strategy:
+        matrix:
+          destination: ['platform=iOS Simulator,OS=13.6,name=iPhone 11 Pro Max']
     steps:
     - uses: actions/checkout@v1
     - name: List available Xcode versions
@@ -24,4 +28,8 @@ jobs:
     - name: Select Xcode
       run: sudo xcode-select -switch /Applications/Xcode.app && /usr/bin/xcodebuild -version
     - name: Run unit tests
-      run: cd /Users/runner/Top50 | xcodebuild test -scheme Top50 -project /Top50/Top50.xcodeproj -destination 'platform=iOS Simulator,name=iPhone 11,OS=14.2' | xcpretty && exit ${PIPESTATUS[0]}
+      run: | 
+        cd Top50 
+        xcodebuild clean test -project Top50.xcodeproj -scheme Texstyle -destination "${destination}" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
+      env:
+       destination: ${{ matrix.destination }}
