@@ -15,21 +15,32 @@ class FeedViewModel {
     var after: String = ""
     
     var cancellables = Set<AnyCancellable>()
-    
+        
+    /// getFeed - Get remote feed from feedService and configures viewModel `feed`.
+    ///
+    /// ```
+    /// getFeed()
+    /// ```
+    ///
+    /// - Parameter onComplete: returns API results
+    /// - Returns: an array of posts in `feed`.
     func getFeed(onComplete: @escaping (_ error: String?) -> Void) {
         
         FeedService.get(self.after).sink { (completion) in
             print(completion)
         } receiveValue: { (feed) in
             
+            //set that the first feed load happened
             self.hasLoaded = true
             
+            //if after is set then append next page otherwise it is firt page
             if self.after == "" {
                 self.feed = feed.data?.children ?? []
             } else {
                 self.feed.append(contentsOf: feed.data?.children ?? [])
             }
             
+            //saves the id for pagination
             self.after = feed.data?.after ?? ""
                         
             onComplete(nil)
@@ -37,10 +48,24 @@ class FeedViewModel {
         .store(in: &cancellables)
     }
     
-    func deletePost(index: Int) {
+    /// deletePostAt - remove on post at a specific index in `feed`.
+    ///
+    /// ```
+    /// deletePostAt(index: 0)
+    /// ```
+    ///
+    /// - Warning: The array must not be empty
+    /// - Parameter index: array index for the post to be removed
+    func deletePostAt(index: Int) {
         self.feed.remove(at: index)
     }
     
+    /// deleteAllPosts - remove all posts in `feed`.
+    ///
+    /// ```
+    /// deleteAllPost()
+    /// ```
+    ///
     func deleteAllPosts() {
         self.feed.removeAll()
     }

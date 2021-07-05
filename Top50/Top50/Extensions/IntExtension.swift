@@ -8,6 +8,14 @@
 import Foundation
 
 extension Int {
+    
+    /// toDate - Get a Date from a given Int
+    ///
+    /// ```
+    /// toDate()
+    /// ```
+    ///
+    /// - Returns: Date
     func toDate() -> Date {
         return Date(timeIntervalSince1970: TimeInterval(self))
     }

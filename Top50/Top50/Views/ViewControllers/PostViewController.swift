@@ -15,6 +15,12 @@ class PostViewController: UIViewController {
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     
+    /// post - main object for fill view content
+    ///
+    /// ```
+    /// post: Post?
+    /// ```
+    ///
     var post: Post? {
         didSet {
             reloadUI()
@@ -29,24 +35,42 @@ class PostViewController: UIViewController {
         self.view.isHidden = post == nil
     }
     
+    /// reloadUI - fill view outlet properties
+    ///
+    /// ```
+    /// reloadUI()
+    /// ```
     func reloadUI() {
         loadViewIfNeeded()
-        authorLabel.text = post?.author
-        createdLabel.text = (post?.created ?? 0).toDate().timeAgo()
-        titleLabel.text = post?.title
         
-        if post?.imageFile == nil {
-            thumbnailImageView.image = nil
-            thumbnailImageView.imageFromUrl(post?.thumbnail ?? "") { (image) in
-                self.post?.imageFile = image
-            }
-        } else {
-            thumbnailImageView.image = post?.imageFile
+        ///if post is nil the view content must be hidden
+        guard let myPost = self.post else {
+            self.view.isHidden = post == nil
+            return
         }
         
-        self.view.isHidden = post == nil
+        authorLabel.text = myPost.author
+        createdLabel.text = myPost.created.toDate().timeAgo()
+        titleLabel.text = myPost.title
+        
+        if myPost.imageFile == nil {
+            thumbnailImageView.image = nil
+            thumbnailImageView.imageFromUrl(post?.thumbnail ?? "") { (image) in
+                myPost.imageFile = image
+            }
+        } else {
+            thumbnailImageView.image = myPost.imageFile
+        }
+        
+        self.view.isHidden = false
     }
     
+    /// doShare - share post content
+    ///
+    /// ```
+    /// doShare()
+    /// ```
+    ///
     @IBAction func doShare(_ sender: Any) {
         if let image = post?.imageFile {
             
@@ -66,6 +90,7 @@ class PostViewController: UIViewController {
     
 }
 
+/// Feed delegate for post content viewer
 extension PostViewController: FeedViewControllerDelegate {
     func selectPost(_ post: Post) {
         self.post = post

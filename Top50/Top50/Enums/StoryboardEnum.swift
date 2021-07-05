@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+// Enum IDs for stortyboard
 enum UIStoryboardEnum: String {
     case main
         

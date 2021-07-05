@@ -44,14 +44,21 @@ class FeedViewController: UIViewController {
         getFeed()
     }
 
+    /// pull request selector
     @objc
     func refresh(_ sender: AnyObject) {
         self.viewModel.after = ""
         getFeed()
     }
     
+    /// getFeed - get feed data from viewModel
+    ///
+    /// ```
+    /// getFeed()
+    /// ```
     func getFeed() {
         
+        ///checks if user is reloading feed or next page to show pull to request
         if self.viewModel.after == "" {
             refreshControl.beginRefreshing()
         }
@@ -71,7 +78,7 @@ class FeedViewController: UIViewController {
     }
     
     func removePostAtIndex(_ indexPath: IndexPath) {
-        self.viewModel.deletePost(index: indexPath.row)
+        self.viewModel.deletePostAt(index: indexPath.row)
         self.tableview.beginUpdates()
         self.tableview.deleteRows(at: [indexPath], with: .left)
         self.tableview.endUpdates()
@@ -81,16 +88,16 @@ class FeedViewController: UIViewController {
 //MARK: IBACTIONS
 extension FeedViewController {
     
+    /// doRemovePost - remove one post from the feed
     @IBAction func doRemovePost(_ sender: Any) {
-        
         let buttonPosition = (sender as AnyObject).convert(CGPoint.zero, to: self.tableview)
         if let indexPath = self.tableview.indexPathForRow(at: buttonPosition) {
             self.removePostAtIndex(indexPath)
         }
     }
     
+    /// doRemoveAllPost - remove all posts from the feed
     @IBAction func doRemoveAllPost(_ sender: Any) {
-        
         self.viewModel.deleteAllPosts()
         self.tableview.beginUpdates()
         self.tableview.reloadSections(IndexSet(integer: 0), with: .left)
@@ -148,10 +155,10 @@ extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
         if self.viewModel.feed.count > 0 {
             let postContainer = self.viewModel.feed[indexPath.row]
         
-            cell.backgroundColor = .colorFromHex(hex: "#EAEAEA")
+            cell.backgroundColor = UIColor.init(named: "newFeedCellBg")
         
             if postContainer.data?.isNew == false {
-                cell.backgroundColor = .white
+                cell.backgroundColor = UIColor.init(named: "feedCellBg")
             }
         }
     }
@@ -163,6 +170,7 @@ extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
         
             let postContainer = self.viewModel.feed[indexPath.row]
         
+            /// checks if delegate has been set to detail view (PostViewController), otherwise sets it now
             if self.delegate == nil {
                 if let navigationController = UINavigationController.instantiate("navDetail", storyboard: .main) as? UINavigationController {
             
@@ -174,6 +182,7 @@ extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
                 }
             }
         
+            /// having delegates and a valid post set it on PostViewController
             if let delegate = self.delegate as? PostViewController, let post = postContainer.data {
             
                 post.isNew = false
@@ -201,6 +210,7 @@ extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK: UIScrollViewDelegate
 extension FeedViewController: UIScrollViewDelegate {
     
+    /// scrollview delegate for pagination
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if tableview.contentOffset.y + tableview.frame.size.height >= tableview.contentSize.height-350 {
             getFeed()

@@ -9,6 +9,15 @@ import Foundation
 import UIKit
 
 extension UIImageView {
+    
+    /// imageFromUrl - get image from url
+    ///
+    /// ```
+    /// imageFromUrl()
+    /// ```
+    /// - Parameter url: image url
+    /// - Parameter onComplete: closure to return UIImage downloaded
+    ///
     func imageFromUrl(_ url: String, onComplete: @escaping (_ image: UIImage) -> Void) {
         
         guard let imageUrl = URL(string: url) else {

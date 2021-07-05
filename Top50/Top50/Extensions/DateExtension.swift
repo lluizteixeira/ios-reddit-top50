@@ -8,6 +8,14 @@
 import Foundation
 
 extension Date {
+        
+    /// timeAgo - Get from a Date how long has passed.
+    ///
+    /// ```
+    /// timeAgo()
+    /// ```
+    ///
+    /// - Returns: String for time elapsed
     func timeAgo() -> String {
         let formatter = RelativeDateTimeFormatter()
         formatter.unitsStyle = .full

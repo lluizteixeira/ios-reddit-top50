@@ -336,7 +336,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KSK-G6-gav">
                                 <rect key="frame" x="0.0" y="812" width="414" height="50"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HBd-z8-fxB">
+                                    <button opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HBd-z8-fxB">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                         <state key="normal" title="Remove all posts">
@@ -372,9 +372,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="KSK-G6-gav" firstAttribute="top" secondItem="kj8-rV-tgk" secondAttribute="bottom" id="GpV-LR-mR7"/>
-                            <constraint firstAttribute="trailing" secondItem="KSK-G6-gav" secondAttribute="trailing" id="J52-Bg-q0p"/>
+                            <constraint firstItem="bdT-xX-Jvd" firstAttribute="trailing" secondItem="KSK-G6-gav" secondAttribute="trailing" id="J52-Bg-q0p"/>
                             <constraint firstItem="kj8-rV-tgk" firstAttribute="top" secondItem="Z2e-TS-kL8" secondAttribute="top" id="NAu-gR-WGD"/>
-                            <constraint firstItem="KSK-G6-gav" firstAttribute="leading" secondItem="Z2e-TS-kL8" secondAttribute="leading" id="P5f-cd-yKC"/>
+                            <constraint firstItem="KSK-G6-gav" firstAttribute="leading" secondItem="bdT-xX-Jvd" secondAttribute="leading" id="P5f-cd-yKC"/>
                             <constraint firstItem="bdT-xX-Jvd" firstAttribute="bottom" secondItem="KSK-G6-gav" secondAttribute="bottom" id="Rvn-eB-oTD"/>
                             <constraint firstItem="kj8-rV-tgk" firstAttribute="leading" secondItem="bdT-xX-Jvd" secondAttribute="leading" id="WCV-UA-q3o"/>
                             <constraint firstItem="kj8-rV-tgk" firstAttribute="trailing" secondItem="bdT-xX-Jvd" secondAttribute="trailing" id="nsX-d5-luY"/>
@@ -423,7 +423,7 @@
         <!--Split View Controller-->
         <scene sceneID="xNg-CX-HoS">
             <objects>
-                <splitViewController storyboardIdentifier="splitFeedController" useStoryboardIdentifierAsRestorationIdentifier="YES" allowDoubleColumnStyle="YES" preferredDisplayMode="beside" behavior="displace" id="x5t-Ss-ni2" sceneMemberID="viewController">
+                <splitViewController storyboardIdentifier="splitFeedController" useStoryboardIdentifierAsRestorationIdentifier="YES" allowDoubleColumnStyle="YES" preferredDisplayMode="beside" behavior="displace" id="x5t-Ss-ni2" customClass="SplitViewController" customModule="Top50" customModuleProvider="target" sceneMemberID="viewController">
                     <connections>
                         <segue destination="KuN-1P-0go" kind="relationship" relationship="masterViewController" id="sDI-dY-jAP"/>
                         <segue destination="Rt6-fB-qS4" kind="relationship" relationship="detailViewController" id="NRp-Qf-q6r"/>

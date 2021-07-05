@@ -19,6 +19,12 @@ class FeedCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var commentsLabel: UILabel!
     
+    /// post - main object for fill cell content
+    ///
+    /// ```
+    /// post: Post?
+    /// ```
+    ///
     var post: Post? {
         didSet {
             authorLabel.text = post?.author

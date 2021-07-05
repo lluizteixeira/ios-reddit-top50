@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 
 extension UIView {
+
+    //MARK: Set inspectables for UIView in Storyboards
     
     @IBInspectable
     var cornerRadius: CGFloat {

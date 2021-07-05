@@ -10,10 +10,21 @@ import UIKit
 
 extension UIViewController {
     
+    // Get UIViewController identifier - usually its own file name
     class var identifier: String {
         return String(describing: self)
     }
     
+    /// instantiate - Instatiate UIViewController by identifier (file name) or specific id
+    /// storyboard enum required
+    ///
+    /// ```
+    /// instantiate()
+    /// ```
+    /// - Parameter myIdentifier: string for specific identifier
+    /// - Parameter storyboard: enum for the storyboard where view controller is
+    /// - Returns: an `UIViewController`.
+    ///
     class func instantiate(_ myIdentifier: String? = nil, storyboard: UIStoryboardEnum) -> UIViewController {
         let storyBoard = UIStoryboard(name: storyboard.identifier, bundle: nil)
         if let viewIdentifier = myIdentifier {
@@ -23,6 +34,16 @@ extension UIViewController {
         }
     }
     
+    /// alert - Default alert for messages
+    ///
+    /// ```
+    /// alert()
+    /// ```
+    /// - Parameter title: string for title
+    /// - Parameter message: error message
+    /// - Parameter button: title for main button
+    /// - Parameter handler: callback handler for actions
+    ///
     func alert(title: String, error message: String,
                button: String = "OK", handler: ((UIAlertAction) -> Void)? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
